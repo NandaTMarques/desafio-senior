@@ -1,0 +1,76 @@
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  background-color: rgb(104, 101, 101);
+  color: white;
+  font-family: Open Sans, sans-serif;
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+.home-card {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-weight: 500;
+  height: 100vh;
+  justify-content: center;
+  text-shadow: black 4px 8px 4px;
+  width: 100%;
+}
+
+.card {
+  align-items: center;
+  background-color: rgb(240, 237, 237);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.63) 2px 2px 6px;
+  color: rgb(104, 101, 101);
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  margin: 0;
+  width: 250px;
+}
+
+.logo-home {
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  padding-bottom: 20px;
+}
+
+.cardButtons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.initial-button {
+  background-color: rgb(241, 138, 53);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  height: 35px;
+  margin: 5px;
+  text-decoration: none;
+  width: 200px;
+}
+
+.initial-button:hover {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.initial-button a {
+  color:rgb(56, 55, 55);
+  text-decoration: none;
+}

@@ -4,9 +4,9 @@ import logo from '../images/image.png';
 
 const Home = () => {
   return (
-    <section>
+    <section className="home-card">
       <div className="card">
-        <img src={logo} alt='logo Senior'/>
+        <img src={logo} alt='logo Senior' className="logo-home"/>
         <div className="cardButtons">
           <button
           className="initial-button"

@@ -39,13 +39,13 @@ const Form = () => {
         onChange={ ({target}) => setTax(target.value) }
       />
       <button
-          className="add-service"
-          type="button"
-          data-testid="add-service"
-          //onClick={ () =>  }
-          >
-          Adicionar Serviço
-        </button>
+        className="add-service"
+        type="button"
+        data-testid="add-service"
+        //onClick={ () =>  }
+        >
+        Adicionar Serviço
+      </button>
     </form>
   )
 }
