@@ -39,7 +39,7 @@ const Form = () => {
         onChange={ ({target}) => setTax(target.value) }
       />
       <button
-        className="add-service"
+        className="add-service-order"
         type="button"
         data-testid="add-service"
         //onClick={ () =>  }

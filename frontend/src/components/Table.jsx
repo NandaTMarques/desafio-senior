@@ -4,7 +4,7 @@ const Services = [{service: 'encanador', time:'8', employee: 'Ediberto', tax:'12
 
 const Table = () => {
   return (
-    <section>
+    <section className="table-section">
       <table>
         <thead>
           <tr>
@@ -24,7 +24,7 @@ const Table = () => {
               <td>
                 <button
                   type="button"
-                  data-testid="delete-btn"
+                  data-testid="delete-buttton"
                   //onClick={ () => removeServiceButton(service.id) }
                   className="delete-button"
                 >
@@ -32,7 +32,7 @@ const Table = () => {
                 </button>
                 <button
                   type="button"
-                  data-testid="edit-btn"
+                  data-testid="edit-button"
                   className="edit-button"
                   //onClick={ () => selectExpenseButton(expense.id) }
                 >
@@ -44,7 +44,7 @@ const Table = () => {
         </tbody>
       </table>
       <button
-        className="add-order"
+        className="add-service-order"
         type="submit"
         data-testid="add-order"
         //onClick={ () =>  }

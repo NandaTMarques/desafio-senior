@@ -1,10 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import logo from '../images/image.png';
+import { Redirect } from 'react-router';
 
 const Home = () => {
+  const [redirectServices, setRedirectServices] = useState(false);
+  const [redirectOrders, setRedirectOrders] = useState(false);
+
   return (
     <section className="home-card">
+      {redirectServices && <Redirect to="/services" />}
+      {redirectOrders && <Redirect to="/orders" />}
+      <Redirect to="/" />
       <div className="card">
         <img src={logo} alt='logo Senior' className="logo-home"/>
         <div className="cardButtons">
@@ -12,15 +18,17 @@ const Home = () => {
           className="initial-button"
           type="button"
           data-testid="register-button"
+          onClick={() => setRedirectServices(true)}
           >
-            <Link to="/services" className="">Serviço</Link>
+            Serviço
           </button>
           <button
           className="initial-button"
           type="button"
           data-testid="service-request-button"
+          onClick={() => setRedirectOrders(true)}
           >
-            <Link to="/orders" className="">Pedido de Serviço</Link>
+            Pedido de Serviço
           </button>
         </div>
       </div>
