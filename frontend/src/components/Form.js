@@ -4,19 +4,21 @@ const servicos = ['eletricista', 'encanador', 'marceneiro'];
 const funcionarios = ['Ediberto', 'Bruno', 'Fernanda'];
 
 const Form = () => {
-  const [service, setService] = useState(servicos[0]);
-  const [time, setTime] = useState(1);
-  const [funcionario, setFuncionario] = useState('Ediberto');
-  const [tax, setTax] = useState(1);
+  const [service, setService] = useState();
+  const [time, setTime] = useState();
+  const [funcionario, setFuncionario] = useState();
+  const [tax, setTax] = useState();
 
   return (
     <form className="form-select">
       <select name="serviço" value={service} onChange={ ({target}) => setService(target.value) }>
+        <option value="" disabled selected>Serviço</option>
         {servicos.map((servico, index) => (
           <option value={servico} key={index}>{ servico }</option>
           ))}
       </select>
-      <input 
+      <input
+        placeholder="Horas"
         type="number"
         name="time"
         value={time}
@@ -28,11 +30,13 @@ const Form = () => {
         value={funcionario}
         onChange={ ({target}) => setFuncionario(target.value) }
       >
+        <option value="" disabled selected>Funcionário</option>
         {funcionarios.map((funcionario, index) => (
           <option value={funcionario} key={index}>{ funcionario }</option>
           ))}
       </select>
-      <input 
+      <input
+        placeholder="Taxa"
         type="number"
         name="tax"
         value={tax}
