@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 
-const Services = [{service: 'encanador', time:'8', employee: 'Ediberto', tax:'12'}]
+const Services = [{service: 'encanador', time:'8', employee: 'Ediberto', tax:'12'},
+{service: 'marceneiro', time:'8', employee: 'Bruno', tax:'12'}]
 
 const Table = () => {
   return (
-    <section className="table-section">
-      <table>
+    <section className="content">
+      <table className="rTable">
         <thead>
           <tr>
             <th>Serviço</th>
             <th>Horas</th>
             <th>Funcionário</th>
             <th>Valor do imposto</th>
+            <th>Excluir/Editar</th>
           </tr>
         </thead>
         <tbody>
@@ -43,14 +45,6 @@ const Table = () => {
           ))}
         </tbody>
       </table>
-      <button
-        className="add-service-order"
-        type="submit"
-        data-testid="add-order"
-        //onClick={ () =>  }
-        >
-        Criar Ordem
-      </button>
     </section>
   )
 }; 

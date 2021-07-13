@@ -84,10 +84,10 @@ body {
   box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
   color: white;
   font-weight: 800;
-  height: 25px;
-  margin: 5px;
+  height: 32px;
+  margin: 8px;
   text-decoration: none;
-  width: 100px;
+  width: 120px;
 }
 
 .add-service {
@@ -97,10 +97,24 @@ body {
   box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
   color: white;
   font-weight: 800;
-  height: 25px;
+  height: 32px;
   margin: 5px;
   text-decoration: none;
-  width: 100px;
+  width: 120px;
+}
+
+.add-service-form {
+  background-color: rgb(91, 214, 128);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-decoration: none;
+  width: 130px;
 }
 
 .add-service-order {
@@ -110,8 +124,8 @@ body {
   box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
   color: white;
   font-weight: 800;
-  height: 25px;
-  margin: 5px;
+  height: 32px;
+  margin: 8px;
   text-decoration: none;
   width: 120px;
 }
@@ -160,11 +174,71 @@ body {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
   color:rgb(56, 55, 55);
-  height: 23px;
+  height: 32px;
   margin: 8px;
 }
 
-.table-section {
+/* table-----------------------------> */
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content{
+  border-collapse: collapse;
+  display:flex;
+  margin: auto;
+}
+
+.rTable{
+  width: 100%;
+  text-align: center;
+}
+
+.rTable thead{
+  background: rgb(150, 145, 145);
+  border-radius: 5px;
+  color:rgb(71, 70, 70);
+  font-weight: bold;
+}
+
+.rTable th , .rTable td{
+  background: rgb(248, 235, 193);
+  color:rgb(71, 70, 70);
+  padding: 7px 0;
+}
+
+@media screen and (max-width: 480px){
+    .content{width: 94%;}
+    .rTable thead{display:none;}
+    .rTable tbody td{display: flex; flex-direction: column; }
+}
+
+@media only screen and (min-width: 1200px){
+    .content{width:100%;}
+    .rTable tbody tr td:nth-child(1){width:15%;}
+    .rTable tbody tr td:nth-child(2){width:15%;}
+    .rTable tbody tr td:nth-child(3){width:20%;}
+    .rTable tbody tr td:nth-child(4){width:20%;}
+    .rTable tbody tr td:nth-child(5){width:30%;}
+}
+
+.form-select input, select {
   background-color: rgb(240, 237, 237);
-  color:rgb(56, 55, 55);
+  border-radius: 5px;
+  border:  rgb(71, 70, 70);
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: rgb(71, 70, 70);
+  margin: 10px;
+  width: 130px;
+}
+
+.form-select {
+  display: flex;
+  height: 50px;
+  justify-content: start;
+  width: 80%;
+  margin-left: 10px;
 }

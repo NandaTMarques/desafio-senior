@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 const servicos = ['eletricista', 'encanador', 'marceneiro'];
 const funcionarios = ['Ediberto', 'Bruno', 'Fernanda'];
 
@@ -9,7 +10,7 @@ const Form = () => {
   const [tax, setTax] = useState(1);
 
   return (
-    <form>
+    <form className="form-select">
       <select name="serviço" value={service} onChange={ ({target}) => setService(target.value) }>
         {servicos.map((servico, index) => (
           <option value={servico} key={index}>{ servico }</option>
@@ -39,7 +40,7 @@ const Form = () => {
         onChange={ ({target}) => setTax(target.value) }
       />
       <button
-        className="add-service-order"
+        className="add-service-form"
         type="button"
         data-testid="add-service"
         //onClick={ () =>  }
