@@ -9,7 +9,6 @@ function AllServices() {
   useEffect(() => {
     async function loadServices() {
       const response = await api.get('/api/services');
-      console.log(response.data)
       setServices(response.data)
     }
     loadServices();
@@ -38,7 +37,7 @@ function AllServices() {
                 <button
                   type="button"
                   data-testid="delete-buttton"
-                  //onClick={ () => removeServiceButton(service.id) }
+                  //onClick={ () => }
                   className="delete-button"
                 >
                   Excluir
@@ -47,7 +46,7 @@ function AllServices() {
                   type="button"
                   data-testid="edit-button"
                   className="edit-button"
-                  //onClick={ () => selectExpenseButton(expense.id) }
+                  //onClick={ () => }
                 >
                   Editar
                 </button>

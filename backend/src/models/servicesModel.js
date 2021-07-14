@@ -2,7 +2,6 @@ const connection = require('../config/connection');
 const { ObjectId } = require('mongodb');
 
 const createService = async (name, value) => {
-  //console.log(name, value);
   const service = await connection()
     .then((db) => db.collection('services')
       .insertOne({ name, value }))

@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const path = require('path');
 
 const errorMiddleware = require('./src/middlewares/errorMiddleware');
 const servicesRouter = require('./src/routes/servicesRoutes');
