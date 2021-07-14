@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import Table from '../components/Table';
 
-const servicos = ['eletricista', 'encanador', 'marceneiro'];
 const funcionarios = ['Fernanda', 'Ícaro', 'Beto', 'Bruno'];
 
-const Form = () => {
+const Form = ({allServices}) => {
   const [nameService, setNameService] = useState();
   const [amountHours, setAmountHours] = useState();
   const [employee, setEmployee] = useState();
   const [taxRate, setTaxRate] = useState();
-  const [allServices, setAllServices] = useState([]);
+  const [totalOrder, setTotalOrder] = useState({
+    serviceTotal: 0,
+    service: 0
+  })
+
+  useEffect(() => {
+    const [serviceData] = allServices.filter(({name}) => name === nameService);
+    if(serviceData) {
+      const serviceTotal = serviceData.value * amountHours;
+      const service = serviceTotal / 100 * taxRate;
+      setTotalOrder({serviceTotal, service});
+    }
+  }, [taxRate]);
 
   async function handleSubmit() {
     const data = [{ nameService, amountHours: parseInt(amountHours), employee, taxRate: parseInt(taxRate) }];
-    console.log(data);
-    if(nameService !== '' && nameService !== 'undefined' && amountHours !== '' && amountHours !== 'undefined' && employee !== '' && employee !== 'undefined' && taxRate !== '' && taxRate !== 'undefined') {
+    if(nameService !== 'undefined' && amountHours !== 'undefined' && employee !== 'undefined' && taxRate !== 'undefined') {
       const response = await api.post('/api/orders', data);
       if(response.status === 201) {
         alert('Pedido cadastrado com sucesso!');
@@ -26,58 +37,52 @@ const Form = () => {
     }
   };
 
-  useEffect(() => {
-    async function loadServices() {
-      const response = await api.get('/api/services');
-      console.log(response.data)
-      setAllServices(response.data)
-    }
-    loadServices();
-  }, []);
-
   return (
-    <form className="form-select">
-      <select name="serviço" value={nameService} onChange={ ({target}) => setNameService(target.value) }>
-        <option value="" disabled selected>Serviço</option>
-        {allServices.map((service, index) => (
-          <option value={service.name} key={index}>{ service.name }</option>
-          ))}
-      </select>
-      <input
-        placeholder="Horas"
-        type="number"
-        name="time"
-        value={amountHours}
-        min={1} 
-        onChange={ ({target}) => setAmountHours(target.value) }
-      />
-      <select
-        name="employee"
-        value={employee}
-        onChange={ ({target}) => setEmployee(target.value) }
-      >
-        <option value="" disabled selected>Funcionário</option>
-        {funcionarios.map((employee, index) => (
-          <option value={employee} key={index}>{ employee }</option>
-          ))}
-      </select>
-      <input
-        placeholder="Taxa"
-        type="number"
-        name="tax"
-        value={taxRate}
-        min={1} 
-        onChange={ ({target}) => setTaxRate(target.value) }
-      />
-      <button
-        className="add-service-form"
-        type="button"
-        data-testid="add-service"
-        onClick={ handleSubmit }
+    <div>
+      <form className="form-select">
+        <select name="serviço" value={nameService} onChange={ ({target}) => setNameService(target.value) }>
+          <option value="" disabled selected>Serviço</option>
+          {allServices.map((service, index) => (
+            <option value={service.name} key={index}>{ service.name }</option>
+            ))}
+        </select>
+        <input
+          placeholder="Horas"
+          type="number"
+          name="time"
+          value={amountHours}
+          min={1} 
+          onChange={ ({target}) => setAmountHours(target.value) }
+        />
+        <select
+          name="employee"
+          value={employee}
+          onChange={ ({target}) => setEmployee(target.value) }
         >
-        Adicionar Serviço
-      </button>
-    </form>
+          <option value="" disabled selected>Funcionário</option>
+          {funcionarios.map((employee, index) => (
+            <option value={employee} key={index}>{ employee }</option>
+            ))}
+        </select>
+        <input
+          placeholder="Taxa"
+          type="number"
+          name="tax"
+          value={taxRate}
+          min={1} 
+          onChange={ ({target}) => setTaxRate(target.value) }
+        />
+        <button
+          className="add-service-form"
+          type="button"
+          data-testid="add-service"
+          onClick={ handleSubmit }
+          >
+          Adicionar Serviço
+        </button>
+      </form>
+      <Table totalOrder={totalOrder}/>
+    </div>
   )
 }
 

@@ -1,71 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import api from '../services/api';
+import React from 'react';
 
-const Table = () => {
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    async function loadOrders() {
-      const response = await api.get('/api/orders');
-      //console.log(response.data)
-      setOrders(response.data)
-    }
-    loadOrders();
-  }, []);
-
+const Table = ({totalOrder}) => {
+  
   return (
     <article className="content">
+      <h2>Detalhes do Pedido</h2>
       <table className="rTable">
         <thead>
           <tr>
-            <th>Serviço</th>
-            <th>Horas</th>
-            <th>Funcionário</th>
-            <th>Valor do imposto</th>
-            <th>Excluir/Editar</th>
+            <th>Valor Total</th>
+            <th>Valor do Lucro</th>
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => (
-            <tr key={ order._id }>
-              <td>{ order.products.nameService }</td>
-              <td>{ order.products.amountHours }</td>
-              <td>{ order.products.employee }</td>
-              <td>{ order.products.tavRate }</td>
-              <td>
-                <button
-                  type="button"
-                  data-testid="delete-buttton"
-                  //onClick={ () => removeServiceButton(service.id) }
-                  className="delete-button"
-                >
-                  Excluir
-                </button>
-                <button
-                  type="button"
-                  data-testid="edit-button"
-                  className="edit-button"
-                  //onClick={ () => selectExpenseButton(expense.id) }
-                >
-                  Editar
-                </button>
-              </td>
+            <tr>
+              <td>R$ {totalOrder.serviceTotal},00</td>
+              <td>R$ {totalOrder.service},00</td>
             </tr>
-          ))}
         </tbody>
       </table>
-      <button
-        className="add-service-order"
-        type="submit"
-        data-testid="add-order"
-        //onClick={ () =>  }
-        >
-        Criar Ordem
-      </button>
-      <section>
-        <h2>Total do Pedido:</h2>
-        <h2>Lucro da Empresa:</h2>
-      </section>
     </article>
   )
 }; 
