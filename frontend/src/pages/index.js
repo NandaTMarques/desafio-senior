@@ -7,7 +7,7 @@ const pages = {
   Home,
   Services,
   Orders,
-  AllServices
+  AllServices,
 };
 
 export default pages;

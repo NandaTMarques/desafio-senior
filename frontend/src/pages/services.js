@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../images/image.png';
 import LogoutButton from '../components/LogoutButton';
+import AllServicesButton from '../components/AllServicesButton';
 import api from '../services/api';
 
 const Services = () => {
@@ -12,8 +13,7 @@ const Services = () => {
     if(name !== '' && value !== 'undefined' && value !== '') {
       const response = await api.post('/api/services', data);
       if(response.status === 201) {
-        window.location.href='/services/all-services';
-        //alert('Serviço cadastrado com sucesso!');
+        alert('Serviço cadastrado com sucesso!');
       } else {
         alert('Erro ao cadastrar o serviço!')
       }
@@ -55,6 +55,7 @@ const Services = () => {
           >
           Cadastrar
         </button>
+        <AllServicesButton />
         <LogoutButton />
       </form>
     </acticle>

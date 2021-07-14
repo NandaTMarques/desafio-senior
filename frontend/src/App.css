@@ -78,7 +78,7 @@ body {
 }
 
 .logout-button {
-  background-color: rgb(241, 138, 53);
+  background-color: rgb(247, 171, 58);
   border: none;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
@@ -92,6 +92,19 @@ body {
 
 .add-service {
   background-color: rgb(91, 214, 128);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 32px;
+  margin: 5px;
+  text-decoration: none;
+  width: 120px;
+}
+
+.all-services-button {
+  background-color: rgb(241, 138, 53);
   border: none;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
@@ -189,6 +202,7 @@ body {
 .content{
   border-collapse: collapse;
   display:flex;
+  flex-direction: column;
   margin: auto;
 }
 
@@ -232,7 +246,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
   color: rgb(71, 70, 70);
   margin: 10px;
-  width: 130px;
+  width: 150px;
 }
 
 .form-select {

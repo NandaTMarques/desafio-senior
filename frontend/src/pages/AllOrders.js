@@ -1,39 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../services/api';
-import logo from '../images/image.png';
-import ReturnButton from '../components/ReturnButton';
 
-function AllServices() {
-  const [services, setServices] = useState([]);
+const AllOrders = [{service: 'encanador', time:'8', employee: 'Ediberto', tax:'12'},
+{service: 'marceneiro', time:'8', employee: 'Bruno', tax:'12'}]
+
+const Table = () => {
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    async function loadServices() {
-      const response = await api.get('/api/services');
+    async function loadOrders() {
+      const response = await api.get('/api/orders');
       console.log(response.data)
-      setServices(response.data)
+      setOrders(response.data)
     }
-    loadServices();
+    loadOrders();
   }, []);
 
   return (
-    <article>
-      <div className="header">
-        <img src={logo} alt='logo Senior' className="logo-home"/>
-        <h2>Serviços</h2>
-      </div>
+    <section className="content">
       <table className="rTable">
         <thead>
           <tr>
             <th>Serviço</th>
-            <th>Valor</th>
+            <th>Horas</th>
+            <th>Funcionário</th>
+            <th>Valor do imposto</th>
             <th>Excluir/Editar</th>
           </tr>
         </thead>
         <tbody>
-          {services.map((service) => (
-            <tr key={ service._id }>
-              <td>{ service.name }</td>
-              <td>{ service.value }</td>
+          {orders.map((order) => (
+            <tr key={ order._id }>
+              <td>{ order.products.serviceId }</td>
+              <td>{ order.products.amountHours }</td>
+              <td>{ order.products.employee }</td>
+              <td>{ order.products.tavRate }</td>
               <td>
                 <button
                   type="button"
@@ -56,9 +57,8 @@ function AllServices() {
           ))}
         </tbody>
       </table>
-      <ReturnButton />
-    </article>
-  );
-}
-
-export default AllServices;
+    </section>
+  )
+}; 
+  
+export default AllOrders;

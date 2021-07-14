@@ -1,8 +1,8 @@
 const ordersModel = require('../models/ordersModel');
 const { ObjectId } = require('mongodb');
 
-const createOrder = async (products) => {
-  const order = await ordersModel.createOrder(products);
+const createOrder = async (orders) => {
+  const order = await ordersModel.createOrder(orders);
   return order;
 };
 

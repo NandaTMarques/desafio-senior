@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const validateForm = (data) =>
   Joi.object({
-    serviceId: Joi.string().min(24).max(24).required(),
+    nameService: Joi.string().min(3).max(24).required(),
     amountHours: Joi.number().min(1).required(),
     employee: Joi.string().required(),
     taxRate: Joi.number().min(1).required(),

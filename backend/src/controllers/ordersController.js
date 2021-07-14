@@ -2,8 +2,8 @@ const ordersServices = require('../services/ordersServices');
 
 const createOrder = async (req, res) => {
   try {
-    const products = req.body;
-    const newOrder = await ordersServices.createOrder(products);
+    const orders = req.body;
+    const newOrder = await ordersServices.createOrder(orders);
     res.status(201).json(newOrder);
   } catch (error) {
     if (error.message === 'Invalid entries. Try again.') {

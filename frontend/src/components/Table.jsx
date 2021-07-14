@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-
-const Services = [{service: 'encanador', time:'8', employee: 'Ediberto', tax:'12'},
-{service: 'marceneiro', time:'8', employee: 'Bruno', tax:'12'}]
+import React, { useState, useEffect } from 'react';
+import api from '../services/api';
 
 const Table = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    async function loadOrders() {
+      const response = await api.get('/api/orders');
+      //console.log(response.data)
+      setOrders(response.data)
+    }
+    loadOrders();
+  }, []);
+
   return (
-    <section className="content">
+    <article className="content">
       <table className="rTable">
         <thead>
           <tr>
@@ -17,12 +26,12 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {Services.map((service) => (
-            <tr key={ service.service }>
-              <td>{ service.service }</td>
-              <td>{ service.time }</td>
-              <td>{ service.employee }</td>
-              <td>{ service.tax }</td>
+          {orders.map((order) => (
+            <tr key={ order._id }>
+              <td>{ order.products.nameService }</td>
+              <td>{ order.products.amountHours }</td>
+              <td>{ order.products.employee }</td>
+              <td>{ order.products.tavRate }</td>
               <td>
                 <button
                   type="button"
@@ -45,7 +54,19 @@ const Table = () => {
           ))}
         </tbody>
       </table>
-    </section>
+      <button
+        className="add-service-order"
+        type="submit"
+        data-testid="add-order"
+        //onClick={ () =>  }
+        >
+        Criar Ordem
+      </button>
+      <section>
+        <h2>Total do Pedido:</h2>
+        <h2>Lucro da Empresa:</h2>
+      </section>
+    </article>
   )
 }; 
   
